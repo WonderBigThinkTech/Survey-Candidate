@@ -1,0 +1,50 @@
+.heroSlickContainer{
+    width: 100%; // Or a specific width like 1200px
+    max-width: 1200px; // Limit max width
+    margin-right: auto; // Center the container
+    overflow: hidden; // Prevent overflow
+    position: relative; // Maintain layout
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    .heroSlick {
+    }
+    
+    .title {
+        font-size: 2em; // Adjust size as necessary
+        margin: 0; // Avoid excessive margin if needed
+    }
+    
+    p {
+        font-size: 1em; // Ensure readable size
+        margin: 0; // Likewise for paragraphs
+    }
+
+    .slick-track{
+        display: flex;
+    }
+
+    .slick-slide {
+        height: auto; // Default height
+        display: flex; // Vertical centering
+        justify-content: center; // Center horizontally
+        align-items: center; // Center vertically
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    .slick-slider {
+        width: 100%;
+    }
+}
+
+.heroSlickItem{
+    position: relative;
+}
+
+@media (max-width : 991px) {
+    .banner-content-inner {
+        text-align: center;
+    }
+}

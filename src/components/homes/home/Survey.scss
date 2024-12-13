@@ -1,0 +1,54 @@
+
+.survey-pulse-button{
+    position: relative;
+    margin-left: -50px;
+    margin-top: -50px;
+    display: block;
+    width: 100px;
+    height: 100px;
+    font-size: 1.3em;
+    font-weight: light;
+    font-family: 'Trebuchet MS', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 100px;
+    letter-spacing: -1px;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    background: #5a99d4;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 rgba(#5a99d4, .5);
+    animation: pulse 1.5s infinite;
+}
+
+
+.survey-pulse-button:hover {
+    animation: none;
+}
+
+
+@keyframes pulse {
+    0% {
+      transform : scale(.9);
+    }
+    70% {
+        transform : scale(1);
+        box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+    }
+      100% {
+        transform : scale(.9);
+        box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+    }
+  }
+
+  .pulse-button-container {
+    div{
+        span {
+            position: absolute;
+            left: calc(100% + 50px);
+            top : 50%;
+            transform: translateY(-50%);
+        }
+    }
+  }

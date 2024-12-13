@@ -1,0 +1,351 @@
+.home-banner {
+    .banner_img {
+        .icon {
+            svg{
+                width: 30px;
+                height: 30px;
+                color: white;
+            }
+        }
+    }
+}
+
+.survey-modal-overlay {
+    z-index: 2999;
+    position: fixed;
+    top : 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.survey-modal {
+    z-index: 3000;
+    position: fixed;
+    top : 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    right: 10%;
+    bottom: 10%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border-radius: 20px;
+    background-color: #f1f1f1;
+    border: 2px solid rgb(255, 165, 0);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+
+    .relative {
+        width: 100%;
+        padding: 20px;
+        position: relative;
+
+        .close-btn {
+            display: block;
+            svg {
+                color: black;
+                font-size: 25px;
+                font-weight: bolder;
+                transition: all 0.3s ease 0s;
+                position: absolute;
+                top: 5px;
+                right: 12px;
+                cursor: pointer;
+                display: block;
+                line-height: 1;
+            }
+        }
+
+        .close-btn:hover {
+            color: rgba($color: #000000, $alpha: 0.9);
+        }
+
+        .paragraphs{
+            padding: 0 3%;
+            p{
+                color: black;
+            }
+        }
+
+        .requirements {
+            padding: 0 3%;
+
+            .label {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+            }
+
+            label {
+                color: black;
+                font-size: 1rem;
+                line-height: 40px;
+                font-style: italic;
+                margin-left: 10px;
+                user-select: none;
+                display: block;
+            }
+
+            input {
+                width: 30px;
+                height: 30px;
+                margin-top: 5px;
+                display: block;
+            }
+
+            .show-tick1-modal {
+                position : fixed;
+                top : 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                z-index: 5000;
+
+                .relative1 {
+                    width: 100%;
+                    height: 100%;
+                    background-color: #f1f1f1;
+                    border: 2px solid rgb(255, 165, 0);
+                    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+                    position: relative;
+                    top : 10%;
+                    left: 10%;
+                    width: 80%;
+                    height: 80%;
+                    right: 10%;
+                    border-radius: 20px;
+                    padding: 5% 3%;
+                    padding-bottom: 1%;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+
+                    .close-btn {
+                        color: black;
+                        font-size: 50px;
+                        font-weight: bolder;
+                        transition: all 0.3s ease 0s;
+                        position: absolute;
+                        top: 25px;
+                        right: 25px;
+                        cursor: pointer;
+                        display: block;
+                        line-height: 1;
+                    }
+
+                    .pdfWindow {
+                        h3{
+                            text-align: center;
+                        }
+                        div{
+                            margin: 5px 0;
+                            font-size: 16px;
+                            color: black;
+                        }
+                    }
+
+                    .btnContainer {
+                        padding: 20px 0 20px;
+                        display: flex;
+                        justify-content: center;
+                        gap: 5px;
+                    }
+
+                    .button-33 {
+                        background-color: #c2fbd7;
+                        border-radius: 100px;
+                        box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+                        color: green;
+                        cursor: pointer;
+                        display: inline-block;
+                        font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+                        padding: 7px 20px;
+                        text-align: center;
+                        text-decoration: none;
+                        transition: all 250ms;
+                        border: 0;
+                        font-size: 16px;
+                        user-select: none;
+                        -webkit-user-select: none;
+                        touch-action: manipulation;
+                    }
+
+                    .button-33:hover {
+                        box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+                        transform: scale(1.05) rotate(-1deg);
+                    }
+
+                    .button-24 {
+                        background: #FF4742;
+                        border: 1px solid #FF4742;
+                        border-radius: 6px;
+                        box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+                        box-sizing: border-box;
+                        color: #FFFFFF;
+                        cursor: pointer;
+                        display: inline-block;
+                        font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+                        font-size: 16px;
+                        font-weight: 800;
+                        line-height: 16px;
+                        min-height: 40px;
+                        outline: 0;
+                        padding: 12px 14px;
+                        text-align: center;
+                        text-rendering: geometricprecision;
+                        text-transform: none;
+                        user-select: none;
+                        -webkit-user-select: none;
+                        touch-action: manipulation;
+                        vertical-align: middle;
+                    }
+
+                    .button-24:hover,
+                    .button-24:active {
+                        background-color: initial;
+                        background-position: 0 0;
+                        color: #FF4742;
+                    }
+
+                    .button-24-green{
+                        background: dodgerblue;
+                        border: 1px solid dodgerblue;
+                    }
+
+                    
+                    .button-24-green:hover,
+                    .button-24-green:active {
+                        background-color: initial;
+                        background-position: 0 0;
+                        color: dodgerblue;
+                    }
+
+                    .button-24:active {
+                    opacity: .5;
+                    }
+
+                    @media (max-width: 565px) {
+                        .btnContainer {
+                            flex-direction: column;
+
+                            .h5{
+                                margin: 5px;
+                            }
+                        }
+                    }
+                }
+
+                .relative1::-webkit-scrollbar {
+                    width: 0;
+                    display: none;
+                }
+            }
+        }
+
+        .btn-container {
+            display: flex;
+            margin-bottom: 25px;
+            justify-content: center;
+            padding: 25px 0;
+
+            .button-71 {
+                background-color: black;
+                cursor: not-allowed;
+                border: 0;
+                border-radius: 56px;
+                color: #fff;
+                cursor: pointer;
+                display: inline-block;
+                font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+                font-size: 18px;
+                font-weight: 600;
+                outline: 0;
+                padding: 16px 21px;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                transition: all .3s;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+            }
+
+            .button-71:before {
+                background-color: initial;
+                background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+                border-radius: 125px;
+                content: "";
+                height: 50%;
+                left: 4%;
+                opacity: .5;
+                position: absolute;
+                top: 0;
+                transition: all .3s;
+                width: 92%;
+            }
+
+            .button-71.enabled {
+                cursor: pointer;
+                background-color: #0078d0;
+            }
+
+            .button-71:hover {
+                box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+                transform: scale(1.05);
+            }
+
+            @media (min-width: 768px) {
+                .button-71 {
+                    padding: 16px 48px;
+                }
+            }
+        }
+    }
+}
+
+.survey-modal::-webkit-scrollbar {
+    width: 0;
+    display: none;
+}
+
+
+.button-7 {
+  background-color: #0095ff;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 5px;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.button-7:hover,
+.button-7:focus {
+  background-color: #07c;
+}
+
+.button-7:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.button-7:active {
+  background-color: #0064bd;
+  box-shadow: none;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Satisfaction Survey form Wizard by Ansonika.">
+    <meta name="author" content="Ansonika">
+    <title>Satisfyc | Satisfaction Survey form Wizard</title>
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/vendors.css" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="../css/custom.css" rel="stylesheet">
+    
+	<script type="text/javascript">
+    function delayedRedirect(){
+        window.location = "../index.html"
+    }
+    </script>
+
+</head>
+<body style="background:#fff;" onLoad="setTimeout('delayedRedirect()', 8000)" style="background:#fff;">
+<?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'src/Exception.php';
+require 'src/PHPMailer.php';
+
+$mail = new PHPMailer(true);
+
+try {
+
+    //Recipients - main edits
+    $mail->setFrom('info@yourdomain.com', 'Survey from Satisfyc');             // Email Address and Name FROM
+    $mail->addAddress('name@yourdomain.com', 'Ansonika');                      // Email Address and Name TO - Name is optional
+    $mail->addReplyTo('noreply@yourdomain.com', 'Survey from Satisfyc');       // Email Address and Name NOREPLY
+    
+    // Content
+    $mail->isHTML(true);                                                       
+    $mail->Subject = 'Survey from Satisfyc';                                   // Email Subject
+
+    //The email body message
+    $message = "A. How was the service provided: " . $_POST['question_1'] . "<br />";
+
+	if( isset( $_POST['additional_message'] ) && $_POST['additional_message']) {
+		$message .= "Your Review: " . $_POST['additional_message'] . "<br />";
+	}
+
+	$message .= "<br />B. Would you reccomend our company: " . $_POST['question_2'] . "<br />";
+
+	if( isset( $_POST['additional_message_2'] ) && $_POST['additional_message_2']) {
+		$message .= "Additional Message: " . $_POST['additional_message_2'] . "<br />";
+	}
+
+	$message .= "<br />C. How did you hear about us:<br />";
+		foreach($_POST['question_3'] as $value) 
+		{ 
+			$message .=   "- " .  trim(stripslashes($value)) . "<br />"; 
+		};
+
+	$message .= "<br /><strong>User Info</strong><br />";
+	$message .= "First name: " . $_POST['firstname'] . "<br />";
+	$message .= "Last name: " . $_POST['lastname'] . "<br />";
+	$message .= "Email: " . $_POST['email'] . "<br />";
+
+	if( isset( $_POST['telephone'] ) && $_POST['telephone']) {
+		$message .= "Telephone: " . $_POST['telephone'] . "<br />";
+	}
+
+
+	if( isset( $_POST['age'] ) && $_POST['age']) {
+		$message .= "Age: " . $_POST['age'] . "<br />";
+	}
+
+	$message .= "Gender: " . $_POST['gender'] . "<br />";
+	$message .= "Terms and conditions accepted: " . $_POST['terms'] . "<br />";
+
+    $mail->Body = "" . $message . "";
+
+    $mail->send();
+
+    // Confirmation/autoreplay email send to who fill the form
+    $mail->ClearAddresses();
+    $mail->addAddress($_POST['email']); // Email address entered on form
+    $mail->isHTML(true);
+    $mail->Subject    = 'Confirmation'; // Custom subject
+    $mail->Body = "" . $message . "";
+
+    $mail->Send();
+
+    echo '<div id="success">
+		    <div class="icon icon--order-success svg">
+		         <svg xmlns="http://www.w3.org/2000/svg" width="72px" height="72px">
+		          <g fill="none" stroke="#8EC343" stroke-width="2">
+		             <circle cx="36" cy="36" r="35" style="stroke-dasharray:240px, 240px; stroke-dashoffset: 480px;"></circle>
+		             <path d="M17.417,37.778l9.93,9.909l25.444-25.393" style="stroke-dasharray:50px, 50px; stroke-dashoffset: 0px;"></path>
+		          </g>
+		         </svg>
+		     </div>
+			<h4><span>Request successfully sent!</span>Thank you for your time</h4>
+			<small>You will be redirect back in 5 seconds.</small>
+		</div>';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+				
+?>
+<!-- END SEND MAIL SCRIPT -->   
+
+</body>
+</html>
