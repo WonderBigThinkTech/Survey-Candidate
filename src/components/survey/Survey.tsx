@@ -44,8 +44,12 @@ export default function SurveyPages({}: SurveyPagesProps) {
   const [answerNumber, setAnswerNumber] = useState<number[]>(Array(surveyData.length).fill(0));
   const [answerContent, setAnswerContent] = useState<any[]>([]);
   const [totalErrors, setTotalErrors] = useState<string[]>([]);
+
   const [modalShowStatus, setModalShowStatus] = useState<boolean>(false);
   const [submitStatus, setSubmitStatus] = useState<boolean>(false);
+
+  // if roommate died, then move to next and next page
+
   const [roommateStatus, setRoommateStatus] = useState<boolean>(true);
 
   const markingSymbol = [
@@ -158,28 +162,15 @@ export default function SurveyPages({}: SurveyPagesProps) {
       }
     ]
   ]
-  
-  // const [formData, setFormData] = useState({
-  //   user_email: '',
-  //   subject: '',
-  //   message: '',
-  // });
 
-  // const sendMail = () => {
-  //   // Replace with your service ID, template ID, and user ID
-  //   emailjs.send('service_k27mpp4', 'template_4h6vb75', formData, '5P0gYHogmOV4OkP8P')
-  //     .then((result) => {
-  //         console.log('Email successfully sent!', result.text);
-  //         setFormData({ user_email: '', subject: '', message: '' }); // Reset form
-  //     }, (error) => {
-  //         console.log('Failed to send email. Error:', error.text);
-  //     });
-  // };
 
+  // json data import or backend data receive
 
   useEffect(() => {
     setSurveyData(jsonData as Surveys);
   }, []);
+
+  // when page is move, then scroll to top
 
   useEffect(() => {
     document.getElementsByClassName('container_centering')[0].scrollTo(0, 0);
@@ -192,6 +183,8 @@ export default function SurveyPages({}: SurveyPagesProps) {
   const prevBtnFunction = () => {
     setPageStatus(prev => Math.max(0, prev - 1)); // Prevent negative page status
   };
+
+  // store all answers of question
 
   const handleSetAnswerContent = (newValue: any, currentPageIndex: number, currentIndex: number, dataType: string) => {
 
@@ -265,22 +258,16 @@ export default function SurveyPages({}: SurveyPagesProps) {
     }
   };
 
+
+  // when next button clicked
+
   const nextBtnFunction = () => {
     const basicData = surveyData[pageStatus];
     const inputData = answerContent[pageStatus];
-    // let emailText:string = "";
-
-    console.log("========== | start | ==========");
-
-
-    console.log("basic data", basicData);
-    console.log("answer data", inputData);
-
-    console.log("========== | end | ==========");
 
     const middelData = surveyData[pageStatus].content;
   
-    // Create an array with default "wbtOk" values
+    // Create an array with default "wbtOk" values with appropriate length
     const tempErrors = new Array(middelData.length).fill("wbtOk"); 
     let hasError = false; // To track if there are errors
   
@@ -288,7 +275,6 @@ export default function SurveyPages({}: SurveyPagesProps) {
       const value = inputData[index];
   
       if (item.required) {
-        // Check for required fields based on type
         if (item.dataType === "inputSmallText") {
           if (!value || value === "") {
             tempErrors[index] = `${item.dataTitle} is required.`;
@@ -297,7 +283,6 @@ export default function SurveyPages({}: SurveyPagesProps) {
           else if(item.dataTitle === "Please let me know your address"){
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple email regex
-            // emailText = value;
             if (!emailRegex.test(value)) {
               tempErrors[index] = `Please provide a valid email address.`;
               hasError = true;
@@ -346,7 +331,7 @@ export default function SurveyPages({}: SurveyPagesProps) {
       }
     });
   
-    // If there are no errors, the totalErrors should remain "wbtOk"
+    // If no errors, the totalErrors should remain "wbtOk"
     if (hasError) {
       console.log("Validation Errors: ", tempErrors);
     } else {
@@ -362,9 +347,9 @@ export default function SurveyPages({}: SurveyPagesProps) {
         setPageStatus(pageStatus + 1);
       }
       else {
-
+        // scoring function start
         scoringFunction(basicData, inputData);
-
+        // and modal show
         setModalShowStatus(true);
       }
     }
@@ -375,17 +360,12 @@ export default function SurveyPages({}: SurveyPagesProps) {
   
 
   const scoringFunction = (basicData:Survey , inputData:any) => {
-    
-    console.log("------------- | start | ---------------");
-
-    console.log("basic data", basicData);
-    console.log("answer data", inputData);
-    
-    console.log("------------- | end | ---------------");
 
     let score:number = 0;
 
     if(pageStatus === 2){
+
+      // special 2 page scoring logic implement
 
       let tempArray:number[] = [];
 
@@ -422,6 +402,9 @@ export default function SurveyPages({}: SurveyPagesProps) {
 
     }
     else {
+
+      // All pages scoring logic implement except second page.
+
       basicData.content.forEach((itemDummy:ContentItem, itemDummyIndex:number) => {
   
         const userAnswer = inputData[itemDummyIndex];
@@ -446,10 +429,7 @@ export default function SurveyPages({}: SurveyPagesProps) {
           })
       }
     }
-
-
-    console.log("score : ", score);
-
+    
     setScoreNumber(score);
 
     return;
@@ -470,11 +450,7 @@ export default function SurveyPages({}: SurveyPagesProps) {
   const DisplayContent = ({basicData, answerData}:DisplayContentProps) => {
     console.log(answerData);
     if(answerData){
-      const answerSplitData = answerData.split(",");
-  
-      console.log("answerSplitData : ", answerSplitData);
-      console.log("basicData : ", basicData);
-  
+      const answerSplitData = answerData.split(",");  
       return (
         basicData.map((item, index) => {
           if(answerSplitData.includes(index.toString())){
@@ -552,7 +528,7 @@ export default function SurveyPages({}: SurveyPagesProps) {
                             />
                           );
                         }
-                        return null; // Return null to avoid rendering nothing
+                        return null;
                       })}
                     </div>
                     <div id="bottom-wizard">
@@ -573,8 +549,8 @@ export default function SurveyPages({}: SurveyPagesProps) {
           <div className='StepModalContainer'>
             <div className='StepModalRelative1'>
               <div className='StepModal'>
-                <span className='close-btn' onClick={() => {setModalShowStatus(false)}}>&times;</span>
-                <h1>Review of your -- Epworth Sleepiness Scale --</h1>
+                
+                <h1>Review of your -- { surveyData[pageStatus].title } --</h1>
                 <div className='mainPanel'>
 
                   {

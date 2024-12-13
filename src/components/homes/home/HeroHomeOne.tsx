@@ -313,136 +313,129 @@ export default function HeroHomeOne () {
         </div>
 }
 
-        {showModal && <div className='survey-modal'> 
-          <div className='relative'>
+        {showModal && 
+        
+        <div className='survey-modal'> 
 
-            <span className='close-btn' onClick={() => {setShowModal(false)}}><LuLogOut /></span>
-
-            <div className="col-12 wow fadeInUp wow fadeIn">
+            <div className="col-12 wow fadeInUp wow fadeIn survey-modal-20">
               <div className="section-title text-center">
                 <span>Questionare</span>
-                <h2 style={{fontStyle : 'italic', fontSize : '1.5em'}}>QUESTIONNAIRE FOR ASSESSMENT OF SLEEP AND RELATED CO-MORBIDITIES</h2>
+                <h2>QUESTIONNAIRE FOR ASSESSMENT OF SLEEP AND RELATED CO-MORBIDITIES</h2>
               </div>
             </div>
+          
+            <div className='relative'>
 
-            <div className='col-12 wow fadeInUp wow fadeIn'>
-              <div className='paragraphs'>
-                {
-                  Paragraphs.map((item, index) => (
-                    <p key={index}>{item}</p>
-                  ))
-                }
-              </div>
-            </div>
-
-            <div className="col-12 wow fadeInUp wow fadeIn">
-              <div className='requirements'>
-                <div className='show-tick1'>
-                  
+              <div className='col-12 wow fadeInUp wow fadeIn'>
+                <div className='paragraphs'>
                   {
-                    showTick1 && 
-                      <div className='show-tick1-modal'>
-                        <div className='relative1'>
-                            <span className='close-btn'  onClick={() => {
-                                setTick1(false);
-                                setShowTick1(false);
-                              }}>&times;</span>
-                            <div className='pdfWindow'>
-                              <h3>Participant Information Sheet (PIS)</h3>
-                              {
-                                pdf1Content.map((item, index) => {
-                                  return (
-                                    <div>
-                                      <b>{index + 1} . {item.title + " : "}</b>
-                                      {item.content}
-                                    </div>
-                                  )
-                                })
-                              }
-                            </div>
-                            <div className='btnContainer'>
-                              <h5 className='button-24 button-24-green' onClick={() => {
-                                setTick1(true);
-                                setShowTick1(false);
-                              }}>Please accept our T&Cs</h5>
-                              <h5 className='button-24' onClick={() => {
-                                setTick1(false);
-                                setShowTick1(false);
-                              }}>No I can't agree</h5>
-                            </div>
-                        </div>
-                      </div>
+                    Paragraphs.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))
                   }
-                  {
-                    showTick2 && 
-                      <div className='show-tick1-modal'>
-                        <div className='relative1'>
-                            <span className='close-btn'  onClick={() => {
-                                setTick2(false);
-                                setShowTick2(false);
-                              }}>&times;</span>
-                            <div className='pdfWindow'>
-                              <h3>Informed Consent Form (ICF)</h3>
-                              {
-                                pdf2Content.map((item, index) => {
-                                  return (
-                                    <div>
-                                      <b>{index + 1} . {item.title + " : "}</b>
-                                      {item.content}
-                                    </div>
-                                  )
-                                })
-                              }
-                              <div>
-                                <b>7. Name of the Participant(s):</b>
+                </div>
+              </div>
+
+              <div className="col-12 wow fadeInUp wow fadeIn">
+                <div className='requirements'>
+                  <div className='show-tick1'>
+                    
+                    {
+                      showTick1 && 
+                        <div className='show-tick1-modal'>
+                          <div className='relative1'>
+                              <div className='pdfWindow'>
+                                <h3>Participant Information Sheet (PIS)</h3>
                                 {
-                                  pdf2AddContent.map((item) => <p>{item}</p>)
-                                  
+                                  pdf1Content.map((item, index) => {
+                                    return (
+                                      <div>
+                                        <b>{index + 1} . {item.title + " : "}</b>
+                                        {item.content}
+                                      </div>
+                                    )
+                                  })
                                 }
                               </div>
-                            </div>
-                            <div className='btnContainer'>
-                              <h5 className='button-24 button-24-green' onClick={() => {
-                                setTick2(true);
-                                setShowTick2(false);
-                              }}>Please accept our T&Cs</h5>
-                              <h5 className='button-24' onClick={() => {
-                                setTick2(false);
-                                setShowTick2(false);
-                              }}>No I can't agree</h5>
-                            </div>
+                              <div className='btnContainer'>
+                                <h5 className='button-24 button-24-green' onClick={() => {
+                                  setTick1(true);
+                                  setShowTick1(false);
+                                }}>Please accept our T&Cs</h5>
+                                <h5 className='button-24' onClick={() => {
+                                  setTick1(false);
+                                  setShowTick1(false);
+                                }}>No I can't agree</h5>
+                              </div>
+                          </div>
                         </div>
-                      </div>
-                  }
-                </div>
-                <div className='form-group'>
-                  <div className='label'>
-                    <input type='checkbox' id='tick1' checked={tick1} onChange={() => setTick1(true)} />
-                    <label htmlFor='tick1'  onClick={() => setShowTick1(true)}>I agree to the T&Cs mentioned in the PIS form</label>
+                    }
+                    {
+                      showTick2 && 
+                        <div className='show-tick1-modal'>
+                          <div className='relative1'>
+                              <div className='pdfWindow'>
+                                <h3>Informed Consent Form (ICF)</h3>
+                                {
+                                  pdf2Content.map((item, index) => {
+                                    return (
+                                      <div>
+                                        <b>{index + 1} . {item.title + " : "}</b>
+                                        {item.content}
+                                      </div>
+                                    )
+                                  })
+                                }
+                                <div>
+                                  <b>7. Name of the Participant(s):</b>
+                                  {
+                                    pdf2AddContent.map((item) => <p>{item}</p>)
+                                    
+                                  }
+                                </div>
+                              </div>
+                              <div className='btnContainer'>
+                                <h5 className='button-24 button-24-green' onClick={() => {
+                                  setTick2(true);
+                                  setShowTick2(false);
+                                }}>Please accept our T&Cs</h5>
+                                <h5 className='button-24' onClick={() => {
+                                  setTick2(false);
+                                  setShowTick2(false);
+                                }}>No I can't agree</h5>
+                              </div>
+                          </div>
+                        </div>
+                    }
                   </div>
-                </div>
-                <div className='form-group'>
-                  <div className='label'>
-                    <input type='checkbox' id='tick2' checked={tick2} onChange={() => setTick2(true)} />
-                    <label htmlFor='tick2' onClick={() => setShowTick2(true)}>I agree to the T&Cs mentioned in the ICF Form</label>
+                  <div className='form-group'>
+                    <div className='label'>
+                      <input type='checkbox' id='tick1' checked={tick1} onChange={() => setShowTick1(true)} />
+                      <label htmlFor='tick1'  onClick={() => setShowTick1(true)}>I agree to the T&Cs mentioned in the PIS form</label>
+                    </div>
+                  </div>
+                  <div className='form-group'>
+                    <div className='label'>
+                      <input type='checkbox' id='tick2' checked={tick2} onChange={() => setShowTick2(true)} />
+                      <label htmlFor='tick2' onClick={() => setShowTick2(true)}>I agree to the T&Cs mentioned in the ICF Form</label>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-              {
-                tick1 && tick2 &&
+                {
+                  tick1 && tick2 &&
 
-                <div className='col-12 wow fadeInUp wow fadeIn'>
-                  <div className='btn-container'>
-                    <a className={'button-71 ' + (tick1 && tick2 && 'enabled')} href='/survey'>
-                      Start Survey
-                    </a>
+                  <div className='col-12 wow fadeInUp wow fadeIn'>
+                    <div className='btn-container'>
+                      <a className={'button-24 button-24-green ' + (tick1 && tick2 && 'enabled')} href='/survey'>
+                        Start Survey
+                      </a>
+                    </div>
                   </div>
-                </div>
-              }
+                }
 
-          </div>
+            </div>
         </div>}
       </section>
     </>

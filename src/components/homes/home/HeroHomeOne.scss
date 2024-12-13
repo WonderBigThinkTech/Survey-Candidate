@@ -22,44 +22,73 @@
 .survey-modal {
     z-index: 3000;
     position: fixed;
-    top : 10%;
-    left: 10%;
-    width: 80%;
-    height: 80%;
-    right: 10%;
-    bottom: 10%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    border-radius: 20px;
+    top : 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    right: 5%;
+    bottom: 5%;
+    overflow: hidden;
+    border-radius: 8px;
     background-color: #f1f1f1;
-    border: 2px solid rgb(255, 165, 0);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
-
-    .relative {
-        width: 100%;
-        padding: 20px;
-        position: relative;
-
-        .close-btn {
-            display: block;
-            svg {
-                color: black;
-                font-size: 25px;
-                font-weight: bolder;
-                transition: all 0.3s ease 0s;
-                position: absolute;
-                top: 5px;
-                right: 12px;
-                cursor: pointer;
-                display: block;
-                line-height: 1;
+    .survey-modal-20 {
+        height: 20%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        border-bottom: 2px solid dodgerblue;
+        .section-title {
+            margin-bottom: 5px;
+            width: 80%;
+            h2{
+                font-style: italic;
+                font-size: 1.5rem;
             }
         }
 
-        .close-btn:hover {
-            color: rgba($color: #000000, $alpha: 0.9);
+        @media (max-width: 768px) {
+            .section-title {
+                h2{
+                    font-size: 1rem;
+                }
+            }
         }
+    }
+    .close-btn {
+        display: block;
+        svg {
+            color: black;
+            font-size: 25px;
+            font-weight: bolder;
+            transition: all 0.3s ease 0s;
+            // position: absolute;
+            // top: 5px;
+            // right: 12px;
+            cursor: pointer;
+            display: block;
+            line-height: 1;
+        }
+    }
+
+    .close-btn:hover {
+        color: rgba($color: #000000, $alpha: 0.9);
+    }
+    .pt20{
+        padding-top: 20px;
+    }
+
+    .relative {
+        width: 100%;
+        height: calc(80% - 20px);
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        margin-top: 30px;
+
+        
 
         .paragraphs{
             padding: 0 3%;
@@ -87,6 +116,12 @@
                 display: block;
             }
 
+            @media (max-width : 565px) {
+                label {
+                    line-height: 25px;
+                }
+            }
+
             input {
                 width: 30px;
                 height: 30px;
@@ -107,7 +142,6 @@
                     width: 100%;
                     height: 100%;
                     background-color: #f1f1f1;
-                    border: 2px solid rgb(255, 165, 0);
                     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
                     position: relative;
                     top : 10%;
@@ -115,7 +149,7 @@
                     width: 80%;
                     height: 80%;
                     right: 10%;
-                    border-radius: 20px;
+                    border-radius: 8px;
                     padding: 5% 3%;
                     padding-bottom: 1%;
                     overflow-x: hidden;
@@ -245,60 +279,56 @@
 
         .btn-container {
             display: flex;
-            margin-bottom: 25px;
             justify-content: center;
             padding: 25px 0;
 
-            .button-71 {
-                background-color: black;
-                cursor: not-allowed;
-                border: 0;
-                border-radius: 56px;
-                color: #fff;
+            .button-24 {
+                background: #FF4742;
+                border: 1px solid #FF4742;
+                border-radius: 6px;
+                box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+                box-sizing: border-box;
+                color: #FFFFFF;
                 cursor: pointer;
                 display: inline-block;
-                font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
-                font-size: 18px;
-                font-weight: 600;
+                font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+                font-size: 16px;
+                font-weight: 800;
+                line-height: 16px;
+                min-height: 40px;
                 outline: 0;
-                padding: 16px 21px;
-                position: relative;
+                padding: 12px 14px;
                 text-align: center;
-                text-decoration: none;
-                transition: all .3s;
+                text-rendering: geometricprecision;
+                text-transform: none;
                 user-select: none;
                 -webkit-user-select: none;
                 touch-action: manipulation;
+                vertical-align: middle;
             }
 
-            .button-71:before {
+            .button-24:hover,
+            .button-24:active {
                 background-color: initial;
-                background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
-                border-radius: 125px;
-                content: "";
-                height: 50%;
-                left: 4%;
-                opacity: .5;
-                position: absolute;
-                top: 0;
-                transition: all .3s;
-                width: 92%;
+                background-position: 0 0;
+                color: #FF4742;
             }
 
-            .button-71.enabled {
-                cursor: pointer;
-                background-color: #0078d0;
+            .button-24-green{
+                background: dodgerblue;
+                border: 1px solid dodgerblue;
             }
 
-            .button-71:hover {
-                box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
-                transform: scale(1.05);
+            
+            .button-24-green:hover,
+            .button-24-green:active {
+                background-color: initial;
+                background-position: 0 0;
+                color: dodgerblue;
             }
 
-            @media (min-width: 768px) {
-                .button-71 {
-                    padding: 16px 48px;
-                }
+            .button-24:active {
+            opacity: .5;
             }
         }
     }

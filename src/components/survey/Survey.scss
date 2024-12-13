@@ -20,11 +20,8 @@
 
     .itemColor {
         color: dodgerblue;
-        text-align: center;
-    }
-
-    textarea {
-
+        padding: 10px;
+        text-align: justify;
     }
 
     textarea::placeholder {
@@ -297,7 +294,7 @@
         .StepModal {
             position: relative;
             z-index: 2;
-            border-radius: 30px;
+            border-radius: 8px;
             width: 100%;
             height: 100%;
             background-color: white;
@@ -341,9 +338,8 @@
 
                 .item {
                     padding : 8px 16px;
-                    margin: 15px 0;
-                    border: 1px dashed dodgerblue;
-                    border-radius: 12px;
+                    margin: 15px;
+                    border-bottom: 1px dashed dodgerblue;
 
                     .content {
                         font-size: 20px;

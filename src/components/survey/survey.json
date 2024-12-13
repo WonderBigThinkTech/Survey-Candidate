@@ -1,7 +1,7 @@
 [
     {
         "id" : 1,
-        "title" : "First Survey",
+        "title" : "General Question",
         "availableLength" : 0,
         "content" : [
             {
@@ -93,7 +93,7 @@
             {
                 "id" : 6,
                 "heading" : "Occupation",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Occupation",
                 "required" : true,
                 "dataContent" : [
@@ -112,7 +112,7 @@
     },
     {
         "id" : 2,
-        "title" : "Second Survey",
+        "title" : "The Epworth Sleepiness Scale (A scale to measure daytime sleepiness)",
         "availableLength" : 7,
         "content" : [
             {
@@ -296,7 +296,7 @@
     },
     {
         "id" : 3,
-        "title" : "Third Survey",
+        "title" : "Pittsburgh Sleep Quality Index (PSQI)",
         "availableLength" : 19,
         "content" : [
             {
@@ -668,7 +668,7 @@
     },
     {
         "id" : 4,
-        "title" : "Fourth Survey",
+        "title" : "If you have a roommate or bed partner, ask him/her how often in the past month you have had loud snoring",
         "availableLength" : 5,
         "content" : [
             {
@@ -742,7 +742,7 @@
     },
     {
         "id" : 5,
-        "title" : "Fifth Survey",
+        "title" : "Karolinska Sleepiness Scale: Subjective level of sleepiness at a particular time during the day",
         "availableLength" : 1,
         "content" : [
             {
@@ -780,7 +780,7 @@
     },
     {
         "id" : 6,
-        "title" : "Sixth",
+        "title" : "Perceived Stress Scale",
         "availableLength" : 10,
         "content" : [
             {
@@ -1031,7 +1031,7 @@
     },
     {
         "id" : 7,
-        "title" : "Seventh Survey",
+        "title" : "A self-assessment scale to determine morningness-eveningness in humans",
         "availableLength" : 19,
         "content" : [
             {
@@ -1414,7 +1414,7 @@
     },
     {
         "id" : 8,
-        "title" : "Either Survey",
+        "title" : "Stop Bang",
         "availableLength" : 8,
         "content" : [
             {
@@ -1541,7 +1541,7 @@
     },
     {
         "id" : 9,
-        "title" : "tentj",
+        "title" : "Questionnaire on lifestyle and Medical conditions",
         "availableLength" : 62,
         "content" : [
             {
