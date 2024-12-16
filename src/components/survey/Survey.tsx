@@ -31,6 +31,7 @@ interface Survey {
   id: number;
   title: string;
   availableLength: number;
+  backImg : string;
   content: ContentItem[];
 }
 
@@ -44,11 +45,16 @@ export default function SurveyPages({}: SurveyPagesProps) {
   const [answerNumber, setAnswerNumber] = useState<number[]>(Array(surveyData.length).fill(0));
   const [answerContent, setAnswerContent] = useState<any[]>([]);
   const [totalErrors, setTotalErrors] = useState<string[]>([]);
+  const [maxSectionReached, setMaxSectionReached] = useState<number>(0);
 
   const [modalShowStatus, setModalShowStatus] = useState<boolean>(false);
   const [submitStatus, setSubmitStatus] = useState<boolean>(false);
 
   // if roommate died, then move to next and next page
+
+  useEffect(() => {
+    console.log('answerContent', answerContent)
+  }, [answerContent])
 
   const [roommateStatus, setRoommateStatus] = useState<boolean>(true);
 
@@ -168,18 +174,27 @@ export default function SurveyPages({}: SurveyPagesProps) {
 
   useEffect(() => {
     setSurveyData(jsonData as Surveys);
+    setAnswerNumber(Array(jsonData.length).fill(0));
   }, []);
 
   // when page is move, then scroll to top
 
   useEffect(() => {
     document.getElementsByClassName('container_centering')[0].scrollTo(0, 0);
+    setMaxSectionReached((prevMax) => Math.max(prevMax, pageStatus));
   }, [pageStatus]);
 
   useEffect(() => {
     setAnswerContent(Array.from({ length: surveyData.length }, () => []));
   }, [surveyData.length]);
 
+  useEffect(() => {
+  // Ensure jsonData is not null or undefined
+  if (jsonData && Array.isArray(jsonData)) {
+    setSurveyData(jsonData as Surveys);
+    setAnswerNumber(Array(jsonData.length).fill(0));
+  }
+}, []);
   const prevBtnFunction = () => {
     setPageStatus(prev => Math.max(0, prev - 1)); // Prevent negative page status
   };
@@ -373,12 +388,12 @@ export default function SurveyPages({}: SurveyPagesProps) {
         tempArray.push(item.mark[item.dataContent.indexOf(inputData[index])]);
       })
 
-      score += tempArray[17];
-      score += Math.ceil((tempArray[1] + tempArray[4]) / 2);
+      score += tempArray[18];
+      score += Math.ceil((tempArray[2] + tempArray[5]) / 2);
 
-      score += (8 - tempArray[3]);
+      score += (8 - tempArray[4]);
 
-      let temp3:number = tempArray[3] * 100 / (tempArray[2] - tempArray[0]);
+      let temp3:number = tempArray[4] * 100 / (tempArray[3] - tempArray[1]);
 
       if(temp3 > 75 && temp3 < 85) {
         score += 1;
@@ -392,13 +407,13 @@ export default function SurveyPages({}: SurveyPagesProps) {
 
       let temp4:number = 0;
       for(let i = 0; i < 9; i ++) {
-        temp4 += tempArray[5 + i];
+        temp4 += tempArray[6 + i];
       }
       score += Math.ceil(temp4 / 9);
 
-      score += tempArray[14];
+      score += tempArray[15];
 
-      score += Math.ceil((tempArray[15] + tempArray[16]) / 2);
+      score += Math.ceil((tempArray[16] + tempArray[17]) / 2);
 
     }
     else {
@@ -475,6 +490,14 @@ export default function SurveyPages({}: SurveyPagesProps) {
     window.location.href = "/";
   }
 
+  const calculateCurrentPageProgress = () => {
+    if (surveyData[pageStatus]) {
+      const totalAnsweredOnPage = answerNumber[pageStatus] || 0;
+      const totalQuestionsOnPage = surveyData[pageStatus].availableLength;
+      return { totalAnsweredOnPage, totalQuestionsOnPage };
+    }
+    return { totalAnsweredOnPage: 0, totalQuestionsOnPage: 0 };
+  };
   return (
     <div className='mySurvey'>
       <div className='style_2'>
@@ -482,33 +505,42 @@ export default function SurveyPages({}: SurveyPagesProps) {
           <div className="container" style={{ display: 'flex', width: '100%', alignItems: 'center' }}>
             <div className="row justify-content-end" style={{ width: '100vw' }}>
               <div className="col-xl-6 col-lg-6 d-flex align-items-center flex-wrap surveyAdd">
-                {
-                  pageStatus !== 0 &&
-                  <div className="pageDots">
-                    <div className='pageBar'></div>
-                    {surveyData.map((_, index) => (
-                      <span key={index} className={'pageDot ' + (pageStatus > index ? 'pageDotactive' : '')}>
-                        <BiCheckDouble />
-                      </span>
-                    ))}
-                  </div>
-                }
+                <div className="pageDots">
+                  <div className='pageBar'></div>
+                  {surveyData.map((_, index) => (
+                    <span 
+                      key={index} 
+                      className={`pageDot ${maxSectionReached >= index ? 'pageDotactive pageDotGreen' : ''}`} 
+                      onClick={() => {
+                        if (index <= maxSectionReached) {
+                          setPageStatus(index);
+                        }
+                      }}
+                    >
+                      <BiCheckDouble />
+                    </span>
+                  ))}
+                </div>
                 <div className="main_title_1">
                   <h3><img src={img1} width="80" height="80" alt="" /> Survey</h3>
                   <p>Our recent survey reveals diverse sleep patterns and factors affecting quality rest.</p>
-                  <p><em>- The Satisfyc Team</em></p>
-                  <div style={{ color: 'white' }}>The survey highlighted that over 60% of participants struggle with falling asleep regularly. Many respondents cited stress and screen time as primary contributors to their sleep difficulties. Understanding these issues can help develop better strategies for improving sleep quality in our community.</div>
+                  <div className='text-center'>
+                    <img src={surveyData?.[pageStatus]?.backImg || ""} width="auto" height="350px" alt="" />
+                  </div>
                 </div>
-                {pageStatus !== 0 && (
-                  <div className="progressBarContainer">
-                    <div className="progressBar" style={{ width: ((answerNumber[pageStatus] === undefined ? 0 : answerNumber[pageStatus]) * 100 / surveyData[pageStatus].availableLength) + '%' }}>
-                      <div className="numberPanel">
-                        {`${answerNumber[pageStatus] === undefined ? 0 : answerNumber[pageStatus]} of `}{surveyData[pageStatus].availableLength}
-                      </div>
+                <div className="progressBarContainer">
+                  <div className="progressBar" style={{ width: `${(answerNumber[pageStatus] || 0) / (surveyData[pageStatus]?.availableLength || 6) * 100}%` }}>
+                    <div className="numberPanel">
+                      {`${calculateCurrentPageProgress().totalAnsweredOnPage} of ${calculateCurrentPageProgress().totalQuestionsOnPage || 6}`}
+                      
+                      {answerNumber[pageStatus] === surveyData[pageStatus]?.availableLength && 
+                        <span className="star">★</span>
+                      }
                     </div>
                   </div>
-                )}
+                </div>
               </div>
+
               <div className="col-xl-5 col-lg-5">
                 <div id="wizard_container">
                   <form id="wrapped" method="POST" autoComplete="off">
@@ -550,70 +582,71 @@ export default function SurveyPages({}: SurveyPagesProps) {
             <div className='StepModalRelative1'>
               <div className='StepModal'>
                 
-                <h1>Review of your -- { surveyData[pageStatus].title } --</h1>
-                <div className='mainPanel'>
+                <h1>{ surveyData[pageStatus].title } </h1>
+                <div className='modalScore'>
+                  <div className='mainPanel'>
 
-                  {
-                    surveyData[pageStatus].content.map((item, index) => {
+                    {
+                      surveyData[pageStatus].content.map((item, index) => {
 
-                      if(item.dataType === "verticalCheckBox"){
-                        return (
-                          <div className='item' key={index}>
-                            <h2 className='title'>{item.dataTitle}</h2>
-                            <DisplayContent basicData={item.dataContent} answerData={answerContent[pageStatus][index]} />
-                          </div>
-                        );
-                      }
-                      else {
-                        return (
-                          <div className='item' key={index}>
-                            <h2 className='title'>{item.dataTitle}</h2>
-                            <p className='content'>{answerContent[pageStatus][index]}</p>
-                          </div>
-                        );
-                      }
-                    })
-                  }
-                </div>
-                <div className="StepFlexRow">
-
-                  
-
-                  {
-                    scoreNumber != 0 &&
-
-                      <div className='result'>
-                        Score : {scoreNumber} <br />
-                        {scoreMessage}
-                      </div>
-                  }
-
-                  {
-                    submitStatus ?
-                    (
-                      <div className="button-24 button-24-green" onClick={handleUltimateData}>
-                        Submit
-                      </div>
-                    )
-                    :
-                    (
-                      <div className="button-24 button-24-green" onClick={() => {
-                        setModalShowStatus(false);
-                        if(roommateStatus){
-                          setPageStatus(pageStatus + 1); // Prevent exceeding total pages
+                        if(item.dataType === "verticalCheckBox"){
+                          return (
+                            <div className='item' key={index}>
+                              <h2 className='title'>{item.dataTitle}</h2>
+                              <DisplayContent basicData={item.dataContent} answerData={answerContent[pageStatus][index]} />
+                            </div>
+                          );
                         }
                         else {
-                          setPageStatus(pageStatus + 2); // Prevent exceeding total pages
-                          setRoommateStatus(true);
+                          return (
+                            <div className='item' key={index}>
+                              <h2 className='title'>{item.dataTitle}</h2>
+                              <p className='content'>{answerContent[pageStatus][index]}</p>
+                            </div>
+                          );
                         }
-                      }}>
-                        Go to Next Step
-                      </div>
-                    )
-                  }
-                  
-                </div>
+                      })
+                    }
+                  </div>
+                  <div className="StepFlexRow">
+                    <div className="stepFlexRowfix">
+                    {
+                      scoreNumber != 0 &&
 
+                        <div className='result'>
+                          <h1>Score :</h1>
+                          <div className="scoreNumber1"> {scoreNumber} </div><br />
+                          {scoreMessage}
+                        </div>
+                    }
+
+                    {
+                      submitStatus ?
+                      (
+                        <div className="button-24 button-24-green" onClick={handleUltimateData}>
+                          Submit
+                        </div>
+                      )
+                      :
+                      (
+                        <div className="button-24 button-24-green" style={{marginTop:"30px", width:"100%"}} onClick={() => {
+                          setModalShowStatus(false);
+                          if(roommateStatus){
+                            setPageStatus(pageStatus + 1); // Prevent exceeding total pages
+                          }
+                          else {
+                            setPageStatus(pageStatus + 2); // Prevent exceeding total pages
+                            setRoommateStatus(true);
+                          }
+                        }}>
+                          Go to Next Step
+                        </div>
+                      )
+                    }
+                    
+                    </div>
+                  </div>
+                </div>
 
               </div>
 

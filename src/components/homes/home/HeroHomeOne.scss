@@ -8,6 +8,11 @@
             }
         }
     }
+    .heroSlick {
+        .title {
+            line-height: 44px;
+        }
+    }
 }
 
 .survey-modal-overlay {
@@ -19,6 +24,21 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
 }
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000; /* Change to the desired color */
+  }
+.disagree-message {
+    text-align: center;
+    margin-top: -10px;
+    font-weight: bold;
+    color: #ff0000; /* Change to the desired color */
+  }
 .survey-modal {
     z-index: 3000;
     position: fixed;

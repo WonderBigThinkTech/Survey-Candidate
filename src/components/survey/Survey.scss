@@ -21,7 +21,7 @@
     .itemColor {
         color: dodgerblue;
         padding: 10px;
-        text-align: justify;
+        text-align: -webkit-center;
     }
 
     textarea::placeholder {
@@ -331,6 +331,7 @@
                 overflow-x: hidden;
                 background-color: #f1f1f1;
                 border-radius : 8px;
+                flex:2;
 
                 &::-webkit-scrollbar {
                     width : 0
@@ -413,18 +414,56 @@
         justify-content: space-between;
         flex-wrap: wrap;
         padding: 10px 0;
-
-        .result {
-            color: black;
-            font-size : 18px;
-            font-weight: bold;
-            font-style: italic;
-            line-height: 1.2;
-        }
+        flex:1;
+        position: relative;
+        .stepFlexRowfix{
+            position: fixed;
+            width:25%;
+            .result {
+                color: black;
+                font-size : 18px;
+                font-weight: bold;
+                //font-style: italic;
+                line-height: 1.2;
+                .scoreNumber1{
+                    font-size: 100px;
+                    color: red;
+                    text-align: center;
+                }
+            }
+            @media(max-width:921px){
+                width:100%;
+                position:unset;
+                .result{
+                    width: 100%;
+                    line-height: 0.8;
+                    .scoreNumber1{
+                        font-size: 30px;
+                    }
+                }
+              }
+              }
+    
+    
     }
 }
 
-
+.star {
+    display: inline-block;
+    color: gold;
+    font-size: 1.5em;
+    margin-left: 10px;
+    animation: spin 1s linear infinite;
+    transform-origin: center;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+.pageDotGreen {
+    color: green;
+  }
 
 @media (max-width : 565px){
     .StepModal {

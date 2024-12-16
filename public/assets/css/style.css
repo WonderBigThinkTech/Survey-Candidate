@@ -675,10 +675,8 @@ img{
 	background-color: #002935;
 	color: #fff;
 	position: relative;
-	height: 750px;
 }
 .banner-content{
-	height: 750px;
 	position: relative;
 	z-index: 1;
 }
@@ -4116,7 +4114,7 @@ li.comment{
 	width: 100%;
 }
 .home-row {
-	padding : 0 3rem;
+	padding : 3rem;
 }
 
 @media (max-width : 565px){
@@ -4125,6 +4123,7 @@ li.comment{
 	}
 }
 .instructors .align-self-center {
+	
 	text-align: end;
 }
 

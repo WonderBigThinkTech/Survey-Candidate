@@ -1,3 +1,17 @@
+.modalScore{
+  display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: fit-content;
+    overflow: auto;
+    gap:20px;
+
+    @media(max-width:921px){
+      flex-direction: column;
+    }
+}
+
 .mySurvey {
 
   .style_2 {
@@ -400,8 +414,8 @@
     letter-spacing: 3px;
   }
   @media (max-width: 991px) {
-    .main_title_1 img {
-      display: none;
+    .main_title_1 .text-center img {
+      height:auto;
     }
   }
   .main_title_1 h1, .main_title_1 h3 {

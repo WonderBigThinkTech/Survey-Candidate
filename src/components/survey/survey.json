@@ -2,7 +2,8 @@
     {
         "id" : 1,
         "title" : "General Question",
-        "availableLength" : 0,
+        "availableLength" : 6,
+        "backImg" : "/survey_back_img/01.jpg",
         "content" : [
             {
                 "id" : 1,
@@ -114,6 +115,7 @@
         "id" : 2,
         "title" : "The Epworth Sleepiness Scale (A scale to measure daytime sleepiness)",
         "availableLength" : 7,
+        "backImg" : "/survey_back_img/02.jpg",
         "content" : [
             {
                 "id" : 1,
@@ -298,18 +300,28 @@
         "id" : 3,
         "title" : "Pittsburgh Sleep Quality Index (PSQI)",
         "availableLength" : 19,
+        "backImg" : "/survey_back_img/03.jpg",
         "content" : [
             {
-                "id" : 1,
+                "id" : 0,
                 "heading" : "Pittsburgh Sleep Quality Index (PSQI)",
+                "dataType" : "list",
+                "dataTitle" : "Instructions: The following questions relate to your usual sleep habits during the past month only. Your answers should indicate the most accurate reply for the majority of days and nights in the past month. Please answer all questions.",
+                "required" : true,
+                "dataContent" : [],
+                "mark" : []
+            },
+            {
+                "id" : 1,
+                "heading" : "During the past month, what time have you usually gone to bed at night?",
                 "dataType" : "verticalRadio",
                 "dataTitle" : "During the past month, what time have you usually gone to bed at night?",
                 "required" : true,
                 "dataContent" : [
-                    "8:00PM",
-                    "10:00PM",
-                    "11:00PM",
-                    "12:00PM",
+                    "8:00 – 10:00 PM",
+                    "10:00 - 11:00 PM",
+                    "11:00 PM - 12:00 AM",
+                    "12:00 - 2:00 AM",
                     "after 2:00 AM"
                 ],
                 "mark" : [
@@ -327,14 +339,16 @@
                 "dataTitle" : "During the past month, how long (in minutes) has it usually taken you to fall asleep each night?",
                 "required" : true,
                 "dataContent" : [
-                    "less than 15 mins",
-                    "16 - 30",
-                    "31 - 60",
+                    "10 - 15",
+                    "15 - 30",
+                    "30 - 45",
+                    "45 - 60",
                     "more than 60 mins"
                 ],
                 "mark" : [
                     0,
                     1,
+                    2,
                     2,
                     3
                 ]
@@ -346,15 +360,17 @@
                 "dataTitle" : "During the past month, what time have you usually gotten up in the morning?",
                 "required" : true,
                 "dataContent" : [
-                    "5:00 am",
-                    "6:00 am",
-                    "8:00 am",
-                    "10:00 am",
-                    "11:00 am"
+                    "Before 5:00 am",
+                    "5:00 - 6:30 am",
+                    "6:30 - 7:45 am",
+                    "7:45 - 9:45 am",
+                    "9:45 - 11:00 am",
+                    "After 11:00 am"
                 ],
                 "mark" : [
                     17,
                     18,
+                    19,
                     20,
                     22,
                     23
@@ -367,16 +383,24 @@
                 "dataTitle" : "During the past month, how many hours of actual sleep did you get at night? (This may be different than the number of hours you spent in bed.)",
                 "required" : true,
                 "dataContent" : [
-                    "less than 5 hours",
+                    "less than 4 hours",
+                    "4 - 5 hours",
                     "5 - 6 hours",
                     "6 - 7 hours",
-                    "more than 7 hours"
+                    "7 - 8 hours",
+                    "8 - 9 hours",
+                    "9 - 10 hours",
+                    "more than 10 hours"
                 ],
                 "mark" : [
+                    4,
                     5,
                     6,
                     7,
-                    8
+                    8,
+                    9,
+                    10,
+                    11
                 ]
             },
             {
@@ -670,6 +694,7 @@
         "id" : 4,
         "title" : "If you have a roommate or bed partner, ask him/her how often in the past month you have had loud snoring",
         "availableLength" : 5,
+        "backImg" : "/survey_back_img/04.jpg",
         "content" : [
             {
                 "id" : 1,
@@ -744,6 +769,7 @@
         "id" : 5,
         "title" : "Karolinska Sleepiness Scale: Subjective level of sleepiness at a particular time during the day",
         "availableLength" : 1,
+        "backImg" : "/survey_back_img/05.jpg",
         "content" : [
             {
                 "id" : 1,
@@ -782,6 +808,7 @@
         "id" : 6,
         "title" : "Perceived Stress Scale",
         "availableLength" : 10,
+        "backImg" : "/survey_back_img/06.jpg",
         "content" : [
             {
                 "id" : 1,
@@ -1033,6 +1060,7 @@
         "id" : 7,
         "title" : "A self-assessment scale to determine morningness-eveningness in humans",
         "availableLength" : 19,
+        "backImg" : "/survey_back_img/07.jpg",
         "content" : [
             {
                 "id" : 1,
@@ -1416,6 +1444,7 @@
         "id" : 8,
         "title" : "Stop Bang",
         "availableLength" : 8,
+        "backImg" : "/survey_back_img/08.jpg",
         "content" : [
             {
                 "id" : 1,
@@ -1543,11 +1572,12 @@
         "id" : 9,
         "title" : "Questionnaire on lifestyle and Medical conditions",
         "availableLength" : 62,
+        "backImg" : "/survey_back_img/09.jpg",
         "content" : [
             {
                 "id" : 1,
                 "heading" : "Questionnaire on lifestyle and Medical conditions",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "How easily do you get tired?",
                 "required" : true,
                 "dataContent" : [
@@ -1559,7 +1589,7 @@
             {
                 "id" : 2,
                 "heading" : "In the last one year, have you felt shortness of breath?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "",
                 "required" : true,
                 "dataContent" : [
@@ -1571,7 +1601,7 @@
             {
                 "id" : 3,
                 "heading" : "In the last one year, did you feel sudden abnormal sweating, nausea or irregular heartbeat?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "In the last one year, did you feel sudden abnormal sweating, nausea or irregular heartbeat?",
                 "required" : true,
                 "dataContent" : [
@@ -1583,7 +1613,7 @@
             {
                 "id" : 4,
                 "heading" : "In a day, how much time do you spend sitting?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "In a day, how much time do you spend sitting?",
                 "required" : true,
                 "dataContent" : [
@@ -1596,7 +1626,7 @@
             {
                 "id" : 5,
                 "heading" : "Do you take medicines to sleep?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you take medicines to sleep?",
                 "required" : true,
                 "dataContent" : [
@@ -1607,7 +1637,7 @@
             {
                 "id" : 6,
                 "heading" : "How frequently do you take medicines?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "How frequently do you take medicines?",
                 "required" : true,
                 "dataContent" : [
@@ -1628,7 +1658,7 @@
             {
                 "id" : 8,
                 "heading" : "How would you rate the intensity of your exercise? ((Mild = Leisurely walking ; Moderate = Walking at brisk pace for about 30 mins on a level/Yoga for 30 mins; Strenuous= Jogging for about 30 mins or more))",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "How would you rate the intensity of your exercise?",
                 "required" : true,
                 "dataContent" : [
@@ -1640,7 +1670,7 @@
             {
                 "id" : 9,
                 "heading" : "Do you suffer from high blood pressure?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you suffer from high blood pressure?",
                 "required" : true,
                 "dataContent" : [
@@ -1652,7 +1682,7 @@
             {
                 "id" : 10,
                 "heading" : " Do you suffer from high blood sugar?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : " Do you suffer from high blood sugar?",
                 "required" : true,
                 "dataContent" : [
@@ -1664,7 +1694,7 @@
             {
                 "id" : 11,
                 "heading" : "Do you suffer from high blood cholesterol?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you suffer from high blood cholesterol?",
                 "required" : true,
                 "dataContent" : [
@@ -1676,7 +1706,7 @@
             {
                 "id" : 12,
                 "heading" : ". Do you suffer from thyroid problems?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : ". Do you suffer from thyroid problems?",
                 "required" : true,
                 "dataContent" : [
@@ -1688,7 +1718,7 @@
             {
                 "id" : 13,
                 "heading" : "Do you suffer from neurological disorder?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you suffer from neurological disorder?",
                 "required" : true,
                 "dataContent" : [
@@ -1700,7 +1730,7 @@
             {
                 "id" : 14,
                 "heading" : "Do you suffer from heart diseases?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you suffer from heart diseases?",
                 "required" : true,
                 "dataContent" : [
@@ -1712,7 +1742,7 @@
             {
                 "id" : 15,
                 "heading" : "Do you suffer from respiratory problems?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you suffer from respiratory problems?",
                 "required" : true,
                 "dataContent" : [
@@ -1724,7 +1754,7 @@
             {
                 "id" : 16,
                 "heading" : "Do you suffer from liver problems?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you suffer from liver problems?",
                 "required" : true,
                 "dataContent" : [
@@ -1736,7 +1766,7 @@
             {
                 "id" : 17,
                 "heading" : "Do you suffer from bone/joint problems?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you suffer from bone/joint problems?",
                 "required" : true,
                 "dataContent" : [
@@ -1748,7 +1778,7 @@
             {
                 "id" : 18,
                 "heading" : "Do you suffer from Kidney problems?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you suffer from Kidney problems?",
                 "required" : true,
                 "dataContent" : [
@@ -1760,7 +1790,7 @@
             {
                 "id" : 19,
                 "heading" : " Do you suffer from eye problems?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : " Do you suffer from eye problems?",
                 "required" : true,
                 "dataContent" : [
@@ -1772,7 +1802,7 @@
             {
                 "id" : 20,
                 "heading" : "Do you suffer from gastrointestinal problems?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you suffer from gastrointestinal problems?",
                 "required" : true,
                 "dataContent" : [
@@ -1784,7 +1814,7 @@
             {
                 "id" : 21,
                 "heading" : "Do you suffer from hearing problems?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you suffer from hearing problems?",
                 "required" : true,
                 "dataContent" : [
@@ -1796,7 +1826,7 @@
             {
                 "id" : 22,
                 "heading" : "Do you suffer from cancer?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you suffer from cancer?",
                 "required" : true,
                 "dataContent" : [
@@ -1808,7 +1838,7 @@
             {
                 "id" : 23,
                 "heading" : "Do you suffer from depression?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you suffer from depression?",
                 "required" : true,
                 "dataContent" : [
@@ -1820,7 +1850,7 @@
             {
                 "id" : 24,
                 "heading" : "Do you suffer from anxiety?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you suffer from anxiety?",
                 "required" : true,
                 "dataContent" : [
@@ -1832,7 +1862,7 @@
             {
                 "id" : 25,
                 "heading" : "Do you suffer from recurrent infections?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Do you suffer from recurrent infections?",
                 "required" : true,
                 "dataContent" : [
@@ -1844,7 +1874,7 @@
             {
                 "id" : 26,
                 "heading" : "Did you undergo any surgery?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Did you undergo any surgery?",
                 "required" : true,
                 "dataContent" : [
@@ -1865,7 +1895,7 @@
             {
                 "id" : 28,
                 "heading" : "How long since you had surgery?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "How long since you had surgery?",
                 "required" : true,
                 "dataContent" : [
@@ -1878,7 +1908,7 @@
             {
                 "id" : 29,
                 "heading" : " Does your family suffer from high blood pressure?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : " Does your family suffer from high blood pressure?",
                 "required" : true,
                 "dataContent" : [
@@ -1904,7 +1934,7 @@
             {
                 "id" : 31,
                 "heading" : "Does your family suffer from high blood sugar?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Does your family suffer from high blood sugar?",
                 "required" : true,
                 "dataContent" : [
@@ -1930,7 +1960,7 @@
             {
                 "id" : 33,
                 "heading" : "Does your family suffer from high blood cholestrol?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Does your family suffer from high blood cholestrol?",
                 "required" : true,
                 "dataContent" : [
@@ -1956,7 +1986,7 @@
             {
                 "id" : 35,
                 "heading" : " Does your family suffer from Thyroid problem?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : " Does your family suffer from Thyroid problem?",
                 "required" : true,
                 "dataContent" : [
@@ -1982,7 +2012,7 @@
             {
                 "id" : 37,
                 "heading" : " Does your family suffer from Neurological disorders?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : " Does your family suffer from Neurological disorders?",
                 "required" : true,
                 "dataContent" : [
@@ -2008,7 +2038,7 @@
             {
                 "id" : 39,
                 "heading" : "Does your family suffer from heart diseases?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Does your family suffer from heart diseases?",
                 "required" : true,
                 "dataContent" : [
@@ -2034,7 +2064,7 @@
             {
                 "id" : 41,
                 "heading" : "Does your family suffer from respiratory diseases?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Does your family suffer from respiratory diseases?",
                 "required" : true,
                 "dataContent" : [
@@ -2060,7 +2090,7 @@
             {
                 "id" : 43,
                 "heading" : "Does your family suffer from Kidney problems?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Does your family suffer from Kidney problems?",
                 "required" : true,
                 "dataContent" : [
@@ -2086,7 +2116,7 @@
             {
                 "id" : 45,
                 "heading" : "Does your family suffer from gastrointestinal problems?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Does your family suffer from gastrointestinal problems?",
                 "required" : true,
                 "dataContent" : [
@@ -2112,7 +2142,7 @@
             {
                 "id" : 47,
                 "heading" : "Does your family suffer from Liver problems?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Does your family suffer from Liver problems?",
                 "required" : true,
                 "dataContent" : [
@@ -2138,7 +2168,7 @@
             {
                 "id" : 49,
                 "heading" : "Does your family suffer from bone/joint problems?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Does your family suffer from bone/joint problems?",
                 "required" : true,
                 "dataContent" : [
@@ -2164,7 +2194,7 @@
             {
                 "id" : 51,
                 "heading" : "Does your family suffer from eye problems?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Does your family suffer from eye problems?",
                 "required" : true,
                 "dataContent" : [
@@ -2190,7 +2220,7 @@
             {
                 "id" : 53,
                 "heading" : " Does your family suffer from Hearing problems?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : " Does your family suffer from Hearing problems?",
                 "required" : true,
                 "dataContent" : [
@@ -2216,7 +2246,7 @@
             {
                 "id" : 55,
                 "heading" : "Does your family suffer from Cancer?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Does your family suffer from Cancer?",
                 "required" : true,
                 "dataContent" : [
@@ -2242,7 +2272,7 @@
             {
                 "id" : 57,
                 "heading" : " Does your family suffer from Depression?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : " Does your family suffer from Depression?",
                 "required" : true,
                 "dataContent" : [
@@ -2268,7 +2298,7 @@
             {
                 "id" : 59,
                 "heading" : "Does your family suffer from Anxiety?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Does your family suffer from Anxiety?",
                 "required" : true,
                 "dataContent" : [
@@ -2294,7 +2324,7 @@
             {
                 "id" : 61,
                 "heading" : "Does your family suffer from recurrent infections?",
-                "dataType" : "verticalCheckBox",
+                "dataType" : "verticalRadio",
                 "dataTitle" : "Does your family suffer from recurrent infections?",
                 "required" : true,
                 "dataContent" : [

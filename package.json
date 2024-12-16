@@ -50,6 +50,7 @@
     "bootstrap": "^5.3.3",
     "boxicons": "^2.1.4",
     "clsx": "2.1.0",
+    "compass": "^0.1.1",
     "core-js": "^3.39.0",
     "crypto-js": "^4.2.0",
     "custom-surveyjs-widgets": "^1.7.14",

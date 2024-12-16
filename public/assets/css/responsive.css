@@ -21,7 +21,10 @@
 
 @media only screen and (max-width:1366px) { 
 	.banner_img img {
-		width: 440px;
+		width: 100%;
+		max-width : 485px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 	.hbstyle-2 .banner_img img {
 		width: 420px;
@@ -179,9 +182,6 @@
 	.banner_search_form {
 	  width: 500px;
 	}
-	.banner_img {
-		display: none;
-	}
 	.banner-content .sinfo {
 	  margin-left: 15px;
 	  top: -22px;
@@ -319,5 +319,11 @@
 	}
 	.navbar-navs {
 		display: none;
+	}
+}
+
+@media (max-width : 991px) {
+	.banner_img {
+		margin-top: 30px;
 	}
 }
